@@ -1,0 +1,24 @@
+# taken from commit 0bad0c25f7d04da98328907d1c94a9b72fe57c57
+# Author: Daniel Neuhäuser <dasdasich@gmail.com>
+# Date:   Tue Sep 3 20:42:42 2013 +0200
+#
+#    Use maxsize in generate_adhoc_ssl_pair
+#    
+#    maxint is not available on Python 3.x because integers have no maximum
+#    size on 3.x.
+#    
+#    The test I added fails because of a bug in pyopenssl.
+
+diff --git a/werkzeug/serving.py b/werkzeug/serving.py
+index 2fb8660..43c4c71 100644
+--- a/werkzeug/serving.py
++++ b/werkzeug/serving.py
+@@ -277,7 +277,7 @@ def generate_adhoc_ssl_pair(cn=None):
+         cn = '*'
+ 
+     cert = crypto.X509()
+-    cert.set_serial_number(int(random() * sys.maxint))
++    cert.set_serial_number(int(random() * sys.maxsize))
+     cert.gmtime_adj_notBefore(0)
+     cert.gmtime_adj_notAfter(60 * 60 * 24 * 365)
+ 
