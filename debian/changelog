@@ -1,3 +1,9 @@
+python-werkzeug (0.9.6+dfsg-1+deb8u1) jessie-proposed-updates; urgency=medium
+
+  * Fix XSS in debugger
+
+ -- Ondřej Nový <onovy@debian.org>  Thu, 08 Sep 2016 20:20:05 +0200
+
 python-werkzeug (0.9.6+dfsg-1) unstable; urgency=medium
 
   * New upstream release
