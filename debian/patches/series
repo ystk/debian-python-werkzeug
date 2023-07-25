@@ -3,3 +3,5 @@ drop_ubuntu_font.patch
 0bad0c25.patch
 debugger_xss.patch
 CVE-2020-28724.patch
+0006-CVE-2023-23934.patch
+0007-CVE-2023-25577.patch

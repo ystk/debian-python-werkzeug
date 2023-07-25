@@ -1,3 +1,27 @@
+python-werkzeug (0.9.6+dfsg-1+deb8u3) jessie-security; urgency=medium
+
+  * Non-maintainer upload by the ELTS Security Team.
+  * CVE-2023-23934: Werkzeug will parse the cookie `=__Host-test=bad` as
+    __Host-test=bad`. If a Werkzeug application is running next to a
+    vulnerable or malicious subdomain which sets such a cookie using a
+    vulnerable browser, the Werkzeug application will see the bad cookie
+    value but the valid cookie key. Browsers may allow "nameless" cookies
+    that look like `=value` instead of `key=value`. A vulnerable browser
+    may allow a compromised application on an adjacent subdomain to
+    exploit this to set a cookie like `=__Host-test=bad` for another
+    subdomain. (Closes: #1031370)
+  * CVE-2023-25577: Werkzeug's multipart form data parser will parse an
+    unlimited number of parts, including file parts. Parts can be a small
+    amount of bytes, but each requires CPU time to parse and may use more
+    memory as Python data. If a request can be made to an endpoint that
+    accesses `request.data`, `request.form`, `request.files`, or
+    `request.get_data(parse_form_data=False)`, it can cause unexpectedly
+    high resource usage. This allows an attacker to cause a denial of
+    service by sending crafted multipart data to an endpoint that will
+    parse it. (Closes: #1031370)
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 24 Jul 2023 22:09:54 +0000
+
 python-werkzeug (0.9.6+dfsg-1+deb8u2) jessie-security; urgency=medium
 
   * Non-maintainer upload.
